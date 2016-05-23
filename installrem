@@ -1,0 +1,13 @@
+#!/bin/sh
+
+LIGHTGREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+
+
+echo -n "${LIGHTGREEN}remove Package:${RED} " ; #select your package
+read pck
+
+apt-get remove $pck ; ./package
+
+
