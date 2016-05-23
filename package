@@ -1,0 +1,41 @@
+#!/bin/sh
+
+#################################
+# User Friendly package handler #
+#         Version 0.2.3         #
+#      Developer: Codingsec     #
+#################################
+
+clear
+
+#colors
+
+LIGHTGREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+
+echo "${YELLOW}User friendly package tool 0.2.3"
+echo " "
+echo "${LIGHTGREEN}1) Install package"
+echo "2) Update"
+echo "3) Package updater"
+echo "4) Upgrade system"
+echo "5) Clean updater/install system"
+echo "6) Autoremove packages"
+echo "7) Package remover"
+echo " "
+echo -n "${YELLOW}Package Handle [1-7]:${LIGHTGREEN} " ; #select your handler
+
+read pck #main variable
+case $pck in
+
+        1) ./install ;;
+        2) apt-get update ; sh package ;;
+        3) ./pckupdate ;; #package update
+        4) apt-get upgrade -y ; sh package ;; #upgrader
+        5) apt-get clean ; sh package ;;
+        6) apt-get autoremove ; sh package ;; #remove un-needed stuff
+        7) ./installrem $pck ;; #package remover
+        *) echo "press enter to try again. . ." ; read pck ; ./package ;;
+
+esac
